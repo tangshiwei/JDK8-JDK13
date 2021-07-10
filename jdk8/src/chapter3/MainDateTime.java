@@ -1,6 +1,6 @@
 package chapter3;
 
-import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -31,10 +31,18 @@ public class MainDateTime {
         System.out.println("isBefore:" + today.isBefore(localYear));
 
         System.out.println("==============构造日期==============");
-        LocalDateTime of = LocalDateTime.of(2022, 8, 23, 12, 23, 34);
+        LocalDateTime of = LocalDateTime.of(2021, 7, 10, 14, 59, 59);
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         System.out.println("构造日期:"+of.format(dateTimeFormatter));
 
+        System.out.println("==============日期时间差==============");
+        LocalDateTime datetime=LocalDateTime.now();
+        Duration between = Duration.between(datetime, of);
+        System.out.println("相差天数："+between.toDays());
+        System.out.println("相差小时数："+between.toHours());
+        System.out.println("相差分钟数："+between.toMinutes());
+        System.out.println("相差毫秒数："+between.toMillis());
+        System.out.println("相差纳秒数："+between.toNanos());
     }
 }
